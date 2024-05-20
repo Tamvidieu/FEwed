@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import './styles.css';
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Loading from "../Loading/Loading";
 
 export default function Login({setToken}){
     const [isShowed, setIsShowed] = useState(false);
@@ -17,14 +18,13 @@ export default function Login({setToken}){
         const username = userNameRef.current.value;
         const password = passwordRef.current.value;
         try{
-            const res = await axios.post("https://css4mv-8081.csb.app/api/admin/login", {
+            const res = await axios.post("https://2czvz4-8080.csb.app/api/admin/login", {
                 username,
                 password
             });
             const token = res.data.token;
             localStorage.setItem("token", token);
             setLoading(false)
-            alert("Logged in successfully!")
             goTo("/");
         } catch(e){
             alert("Login failed! Wrong login information or password")
@@ -72,9 +72,7 @@ export default function Login({setToken}){
                 <span className="link-text" onClick={() => goTo('/signup')}>Register</span>
             </span>
             {loading && <div className="alert">
-                <div className="alert-text">
-                    <h2>Logging in ...</h2>
-                </div>
+                <Loading text="Logging in..."/>
             </div>}
         </div>
     )

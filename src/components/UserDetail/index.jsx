@@ -22,7 +22,7 @@ function UserDetail() {
       const headers = { 'Authorization': `Bearer ${token}` };
       try{
         const res = await axios.get(
-          `https://css4mv-8081.csb.app/api/user/${userId.userId}`,
+          `https://2czvz4-8080.csb.app/api/user/${userId.userId}`,
           {headers: headers}
         );
         setUserInfor(res.data);

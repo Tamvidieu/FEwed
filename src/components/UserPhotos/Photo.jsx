@@ -27,7 +27,7 @@ export default function Photo(){
       const fetchPhotoDetail = async () => {
         const headers = { 'Authorization': `Bearer ${token}` };
         try{
-          const res = await axios.get(`https://css4mv-8081.csb.app/api/photo/${userPhoto.photoId}`, {headers: headers})
+          const res = await axios.get(`https://2czvz4-8080.csb.app/api/photo/${userPhoto.photoId}`, {headers: headers})
           setPhoto(res.data)
           setLoading(false)
         }catch(e){
@@ -49,7 +49,7 @@ export default function Photo(){
         }
         try{
           const res = await axios.post(
-            `https://css4mv-8081.csb.app/api/photo/commentsOfPhoto/${userPhoto.photoId}`,
+            `https://2czvz4-8080.csb.app/api/photo/commentsOfPhoto/${userPhoto.photoId}`,
             comment,
             {headers: headers}
           )

@@ -16,7 +16,7 @@ export default function Comment({comment}){
             const headers = { 'Authorization': `Bearer ${token}` };
             try{
               const userRes = await axios.get(
-                `https://css4mv-8081.csb.app/api/user/${comment.user_id}`,
+                `https://2czvz4-8080.csb.app/api/user/${comment.user_id}`,
                 {headers: headers}
               )
               setUserName(userRes.data.first_name)

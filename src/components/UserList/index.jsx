@@ -19,7 +19,7 @@ function UserList() {
       const headers = { 'Authorization': `Bearer ${token}` };
       try {
         const res = await axios.get(
-          "https://css4mv-8081.csb.app/api/user/list",
+          "https://2czvz4-8080.csb.app/api/user/list",
           {headers: headers}
         );
         setUsers(res.data);
@@ -53,7 +53,6 @@ function UserList() {
         ))}
       </List>
       <Typography variant="body1" style={{marginTop:"50px"}}>
-        This is the project owned by B21DCCN774 - Pham Viet Tung
       </Typography>
     </div>
   );

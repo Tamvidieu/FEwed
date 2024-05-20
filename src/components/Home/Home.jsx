@@ -13,7 +13,7 @@ export default function Home(){
             const headers = { 'Authorization': `Bearer ${token}` };
             try{
                 const res = await axios.get(
-                    "https://css4mv-8081.csb.app/api/admin/profile",
+                    "https://2czvz4-8080.csb.app/api/admin/profile",
                     {headers: headers}
                     )
 

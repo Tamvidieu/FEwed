@@ -1,6 +1,6 @@
 import { useContext, useState } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faArrowUpFromBracket } from "@fortawesome/free-solid-svg-icons"
+import { faArrowUpFromBracket, faCamera } from "@fortawesome/free-solid-svg-icons"
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage"
 import { storage } from "../../firebase"
 import { MyContext } from "../AppContext/contextProvider"
@@ -9,8 +9,6 @@ import Loading from "../Loading/Loading"
 
 export default function UploadImg(){
     const [img, setImg] = useState(null)
-    const [imgUrl, setImgUrl] = useState(null);
-    const [uploading, setUploading] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
     const {user} = useContext(MyContext)
     const token = localStorage.getItem("token")
@@ -33,13 +31,13 @@ export default function UploadImg(){
             }
 
             const res = await axios.post(
-                'https://css4mv-8081.csb.app/api/photo/new',
+                'https://2czvz4-8080.csb.app/api/photo/new',
                 newPhoto,
                 {headers: headers}
             )
 
             console.log('Success to upload img: ', res.data)
-            setUploading(false)
+            setImg(null)
             setIsLoading(false)
         }catch(e){
             alert("Error to upload image!")
@@ -51,35 +49,24 @@ export default function UploadImg(){
     const handleChange = (event) => {
         const selectedImg = event.target.files[0]
         setImg(selectedImg);
-        setUploading(true); 
-
-        const objectUrl = URL.createObjectURL(selectedImg);
-        setImgUrl(objectUrl);
       };
 
-    if(uploading){
-        return(
-            <div className="upload-dialog">
-                <div className="upload-content">
-                    {imgUrl && <img src={imgUrl} alt="preview"/>}
-                    <div>
-                        <button className="upload-btn" onClick={handleUpload} >Upload</button>
-                        <button className="close-btn" onClick={() => setUploading(false)}>Close</button>
-                    </div>
-                        { isLoading && <div className="uploadingImg">
-                        <Loading />
-                    </div>}
-                </div>
+    if(isLoading){
+        return (
+            <div className="uploadingImg">
+               <Loading text="Uploading"/>
             </div>
         )
     }
 
     return(
         <div className="upload-container">
-          <span className="upload-text">------------------</span>
           <label >
+            <span style={{marginRight: "10px"}}>
+                Upload image
+            </span>
             <FontAwesomeIcon 
-                icon={faArrowUpFromBracket} 
+                icon={faCamera} 
                 className="upload-icon" 
             />
             <input 
@@ -87,7 +74,8 @@ export default function UploadImg(){
                 onChange={handleChange} 
             />
           </label>
-          <span className="upload-text">------------------</span>
+          {img && <button className="upload-btn" onClick={handleUpload} >Upload</button>}
         </div>
+
     )
 }

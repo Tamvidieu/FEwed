@@ -14,10 +14,10 @@
     align-items: center;
     gap: 10px;
     border-radius: 10px;
-    box-shadow: 0 0 10px 2px #212121;
     height: fit-content;
     padding: 15px 30px;
     margin: 30px;
+    border: 1px solid;
 }
 
 .login-container h2{
@@ -121,6 +121,7 @@
     width: 100vw;
     height: 100vh;
     background-color: rgba(33, 33, 33, 0.8);
+    color: #fafafa;
 }
 
 .alert-text{

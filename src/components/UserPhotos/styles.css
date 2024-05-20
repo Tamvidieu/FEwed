@@ -32,10 +32,8 @@
     margin: 20px;
     display: flex;
     flex-direction: column;
-    border-radius: 15px;
-    box-shadow: 0 0 10px 2px #212121;
     padding: 20px 0;
-    flex: 1 1 25%;
+    flex: 1 1 45%;
 }
 
 .cmt-input{
@@ -81,7 +79,7 @@
 }
 
 .photo-time, .cmt-date{
-    font-size: 0.8rem;
+    font-size: 1rem;
     font-weight: bold;
 }
 .photos-area{

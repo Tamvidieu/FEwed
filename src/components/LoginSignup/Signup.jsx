@@ -37,7 +37,7 @@ export default function SignUp(){
         }
         try{
             const res = await axios.post(
-                "https://css4mv-8081.csb.app/api/admin/register",
+                "https://2czvz4-8080.csb.app/api/admin/register",
                 body
                 )
             setLoading(false)
